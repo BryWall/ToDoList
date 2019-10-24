@@ -55,6 +55,12 @@ public class MyScanner {
 		System.out.println("Description (nothing to skip) : ");
 		return SC.nextLine().trim();
 	}
+
+	public boolean recupVersion(){
+		System.out.println("Do you want set new a version? (y/n) ");
+		String bool = SC.nextLine().trim();
+		return bool.equals("y")? true : false;
+	}
 	
 	
 

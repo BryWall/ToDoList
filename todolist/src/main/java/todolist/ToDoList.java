@@ -58,10 +58,10 @@ public class ToDoList {
 		else if(ask.equals("edit")) {
 			int i = this.scanner.getTask(max);
 			String newName = this.scanner.editName();
-			if(!newName.equals(""))
+			if((!newName.equals("") || (!this.getTask(i).getName().equals(newName))))
 				this.getTask(i).setName(newName);
 			String newDesc = this.scanner.editDescription();
-			if(!newDesc.equals(""))
+			if(!newDesc.equals("") || (!this.getTask(i).getDescription().equals(newDesc)))
 				this.getTask(i).setDescritpion(newDesc);
 			System.out.println("A Task has been edited");
 			System.out.println(this.toString());
@@ -75,6 +75,12 @@ public class ToDoList {
 		else if(ask.equals("versions")) {
 			int i = this.scanner.getTask(max);
 			System.out.println(this.tasks.get(i).getVersions().toString());
+			int maxJ = this.tasks.get(i).getVersions().getTasks().size();
+			if(this.scanner.recupVersion()){
+				int j = this.scanner.getTask(maxJ);
+				this.getTask(i).getVersionAndReplace(j);
+				System.out.println(this.toString());
+			}
 		}
 		
 		else {

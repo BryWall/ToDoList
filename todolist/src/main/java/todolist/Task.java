@@ -1,7 +1,5 @@
 package todolist;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
 
 public class Task {
 	
@@ -43,9 +41,9 @@ public class Task {
 	}
 	
 	public void setName(String name) {
-		Task oldTache = new Task(this.name,this.description,this.versions);
-		this.versions.addTask(oldTache);
-		this.name = name;
+		Task oldTask = new Task(this.name,this.description,this.versions);
+		this.versions.addTask(oldTask);
+		this.description = description;
 		
 	}
 	
@@ -63,6 +61,12 @@ public class Task {
 		ToDoList list = this.versions;
 		list.addTask(this);
 		return list.getTask(i);
+	}
+	public void getVersionAndReplace(int i) {
+		Task oldTask = this.getVersion(i);
+		Task newVersion = new Task(oldTask.getName(),oldTask.getDescription(),this.versions);
+		this.versions.addTask(this);
+		
 	}
 	
 	public int getNumberOfVersions() {
